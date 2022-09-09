@@ -6,13 +6,13 @@ const ProductList = ({products}) => {
 
   return (
 
-    <>
-    <ul>
+    <div className='products'>
+    <ul className='products__list'>
         {
-        products?.map(product => <Product key={product.id} id={product.id} name={product.name} image={product.image} product={product}/>)
+        products?.map(product => <Product key={product.id} id={product.id} name={product.name} image={product.image}/>)
         }
     </ul>
-    </>
+    </div>
   )
 }
 

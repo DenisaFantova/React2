@@ -8,22 +8,68 @@ html {
   font-family: 'Open Sans', sans-serif;
 }
 
-.container {
-  max-width: 26rem;
+body {
+  margin: 0;
+}
+
+.container {  
   margin-right: auto;
   margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
-header {
+@media screen and (min-width: 1660px) {
+  .container {
+    max-width: 1600px;
+  }
+}
+
+.header {
+  background: rgb(214, 214, 214);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 30px;
+}
+
+.homepage {
+  text-align: center;
+}
+
+.homepage__text {
+  color: rgb(105, 105, 105);
+}
+
+.products {
+  padding-top: 50px;
+}
+
+.products__list {
+  margin: 0;
+  padding: 0;
+}
+
+.products__item {
+  list-style-type: none;
+  margin-bottom: 20px;
+}
+
+.products__link {
+  text-decoration: none;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 4rem;
+  color: #000;
 }
 
-.logo {
-  width: 10rem;
-  height: 10rem;
-  background-image: url(./img/rocket.svg);
-  background-size: contain;
+.products__link:hover {
+  color:rgb(105, 105, 105);
+}
+
+.products__img {
+  width: 100%;
+  height: auto;
+}
+
+.products__text {
+  padding-top: 15px;
 }

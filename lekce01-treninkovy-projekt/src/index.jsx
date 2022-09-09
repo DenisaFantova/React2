@@ -23,7 +23,7 @@ const App = () => {
 
   return (
     <>
-    <BrowserRouter>  
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={ <HomePage products={products}/>}/>
         <Route path="/product/:id" element={ <ProductPage />}/>

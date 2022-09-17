@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { createRoot } from 'react-dom/client';
 import './style.css';
 
-const TagCloud = () => {
+const TagCloud = ({newTag}) => {
+
   const [tags, setTags] = useState([
     'Workout Gear',
     'Digital Art',
@@ -22,13 +23,41 @@ const TagCloud = () => {
     'Activity',
     'Dolor'
   ])
+
+  useEffect(
+    () => {
+     console.log(newTag)
+     setTags([...tags, newTag])
+     console.log(tags)
+    },
+    [newTag]
+  )
+
+  return (
+    <>
+    <ul className="tag-list">
+      {tags.map (tag => <li key={tag}>{tag}</li>) }
+    </ul>
+    </>
+  )
+
+ 
 }
 
 const App = () => {
+
+  const [newTag, setNewTag] = useState(null)
+ 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setNewTag(e.target.elements.tag.value)
+  }
+
   return (
     <div className="container">
-      <form>
-        <input type="text" />
+      <TagCloud newTag={newTag}></TagCloud>
+      <form onSubmit={handleSubmit}>
+        <input type="text" name="tag"/>
         <button>Odeslat</button>
       </form>
     </div>

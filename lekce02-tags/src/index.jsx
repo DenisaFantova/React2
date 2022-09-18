@@ -32,15 +32,23 @@ const TagCloud = ({newTag}) => {
     },[newTag]
   )
 
+
+  const deteleFirstTag = (tags) => {
+    const newTags = [...tags]
+    newTags.shift()
+    return (
+      setTags([...newTags])
+    )
+  }
+
   return (
     <>
     <ul className="tag-list">
       {tags.map (tag => <li key={tag}>{tag}</li>) }
     </ul>
+    <button onClick={() => deteleFirstTag(tags)}>Smaž první tag</button>
     </>
-  )
-
- 
+  ) 
 }
 
 const App = () => {

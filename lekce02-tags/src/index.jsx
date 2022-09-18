@@ -23,14 +23,13 @@ const TagCloud = ({newTag}) => {
     'Activity',
     'Dolor'
   ])
-
+  
   useEffect(
     () => {
-     console.log(newTag)
-     setTags([...tags, newTag])
-     console.log(tags)
-    },
-    [newTag]
+      if (newTag !== '') {
+        setTags([...tags, newTag])
+      }
+    },[newTag]
   )
 
   return (
@@ -46,7 +45,7 @@ const TagCloud = ({newTag}) => {
 
 const App = () => {
 
-  const [newTag, setNewTag] = useState(null)
+  const [newTag, setNewTag] = useState('')
  
   const handleSubmit = (e) => {
     e.preventDefault()

@@ -18,17 +18,22 @@ const generateWord = (size) => {
 };
 
 const Stage = () => {
-  const [words, setWords] = useState(['jahoda']);
+  const [words, setWords] = useState(['jahoda', 'jantar', 'jaspis']);
 
   const handleFinish = () => {
-    setWords([generateWord(6)]);
+    words.shift();
+    setWords([...words, generateWord(6)]);
+    console.log(words)
   }
 
   return (
     <div className="stage">
       <div className="stage__mistakes">Chyb: 0</div>
       <div className="stage__words">
-        {words.map((word) => <Wordbox onFinish={handleFinish} word={word} key={word} />)}
+         {words.map((word, index) => (index === 0)
+         ? <Wordbox active={true} onFinish={handleFinish} word={word} key={word} />
+         : <Wordbox active={false} onFinish={handleFinish} word={word} key={word} />
+         ) }
       </div>
     </div>
   );

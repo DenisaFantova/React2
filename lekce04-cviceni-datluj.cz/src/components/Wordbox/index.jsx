@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './style.css';
 
-const Wordbox = ({ word, active, onFinish }) => {
+const Wordbox = ({ word, active, onMistake, onFinish}) => {
   const [lettersLeft, setLettersLeft] = useState(word);
   const [mistake, setMistake] = useState(false);
 
@@ -11,6 +11,7 @@ const Wordbox = ({ word, active, onFinish }) => {
       setMistake(false)
     } else {
       setMistake(true)
+      onMistake()
     }
     
     if (e.code ===  'Key' + word.slice(-1).toUpperCase() && lettersLeft.length === 1) {
@@ -21,11 +22,10 @@ const Wordbox = ({ word, active, onFinish }) => {
   useEffect(() => {
     if (active) {
     document.addEventListener('keyup', handleKeyUp);
-    console.log(active)
-    
+
     return () => document.removeEventListener('keyup', handleKeyUp);
     }
-  }, [lettersLeft, active]);
+  }, [lettersLeft, active, onMistake]);
 
   
   return (

@@ -7,16 +7,14 @@ const OrderForm = () => {
         value: '',
         valid: false
     }
-  );  
+  );
 
   const handleEmailChange = (newEmail) => {
     setEmail({...email, value: newEmail});
-    console.log(newEmail)
-    console.log(email)
     
-    // if (newEmail.value.includes('@')) {
-    //    setEmail({...email, valid: true})
-    // }
+    if (newEmail.includes('@')) {
+        setEmail({...email, value: newEmail, valid: true})
+    }
   }
    
   return (

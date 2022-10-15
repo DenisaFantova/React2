@@ -14,6 +14,8 @@ const OrderForm = () => {
     
     if (newEmail.includes('@')) {
         setEmail({...email, value: newEmail, valid: true})
+    } else {
+      setEmail({...email, value: newEmail, valid: false})
     }
   }
    

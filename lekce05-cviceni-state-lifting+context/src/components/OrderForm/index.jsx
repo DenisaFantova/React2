@@ -1,13 +1,17 @@
 import React, {useState}  from 'react'
 import EmailInput from '../EmailInput'
+import { useLogin } from '../../login-context';
 
 const OrderForm = () => {
+  const {login} = useLogin();
+
   const [email, setEmail] = useState(
     {
-        value: '',
+        value: login?.email,
         valid: false
     }
   );
+
 
   const handleEmailChange = (newEmail) => {
     setEmail({...email, value: newEmail});

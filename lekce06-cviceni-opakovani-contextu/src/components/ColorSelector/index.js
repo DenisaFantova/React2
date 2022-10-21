@@ -2,24 +2,27 @@ import React from 'react';
 
 import {colorsData} from '../../data';
 
+import { useSetting } from '../../setting-context';
+
 const ColorSelector = () => {
+  const {color, changeColor} = useSetting();
 
-	const handleClick = (item) => {
-		console.log('color', item.id);
-	}
+  const handleClick = (item) => {
+    changeColor(item.id);
+  }
 
-	return (
-		<div className="items">
-			{colorsData.map(color =>
-				<div
-					className='item'
-					key={color.id}
-					style={{ backgroundColor: color.value}}
-					onClick={() => { handleClick(color) }}
-					/>
-			)}
-		</div>
-	);
+  return (
+    <div className="items">
+      {colorsData.map(colorItem =>
+        <div
+          className={colorItem.id === color ? 'item active' : 'item'}
+          key={colorItem.id}
+          style={{ backgroundColor: colorItem.value}}
+          onClick={() => { handleClick(colorItem) }}
+          />
+      )}
+    </div>
+  );
 }
 
 export default ColorSelector;

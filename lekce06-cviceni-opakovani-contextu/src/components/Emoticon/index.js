@@ -7,14 +7,16 @@ import {colorsData} from '../../data.js'
 import { useSetting } from '../../setting-context';
 
 const Emoticon = () => {
-	const {eyes, mouth, color} = useSetting();
+  const {eyes, mouth, color} = useSetting();
 
-	return (
-		<div className='emoticon' style={{ backgroundColor: colorsData[color].value }}>
-			<img className="emoticon__eyes" src={eyesData[eyes].image} />
-			<img className="emoticon__mouth" src={mouthData[mouth].image} />
-		</div>
-	);
+
+  return (
+
+    <div className='emoticon' style={{ backgroundColor: colorsData.find(({id}) => id === color).value }}>
+      <img className="emoticon__eyes" src={eyesData.find(({id}) => id === eyes).image} />
+      <img className="emoticon__mouth" src={mouthData.find(({id}) => id === mouth).image} />
+    </div>
+  );
 }
 
 export default Emoticon;

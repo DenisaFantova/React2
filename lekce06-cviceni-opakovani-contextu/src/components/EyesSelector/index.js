@@ -2,24 +2,27 @@ import React from 'react';
 
 import {eyesData} from '../../data';
 
+import { useSetting } from '../../setting-context';
+
 const EyesSelector = () => {
+  const {eyes, changeEyes} = useSetting();
 
-	const handleClick = (item) => {
-		console.log('eyes', item.id);
-	}
+  const handleClick = (item) => {
+    changeEyes(item.id);
+  }
 
-	return (
-		<div className="items">
-			{eyesData.map(eyes =>
-				<img
-					className='item'
-					key={eyes.id}
-					src={eyes.image}
-					onClick={() => { handleClick(eyes) }}
-					/>
-			)}
-		</div>
-	);
+  return (
+    <div className="items">
+      {eyesData.map(eyesItem =>
+        <img
+          className={eyesItem.id === eyes ? 'item active' : 'item'}
+          key={eyesItem.id}
+          src={eyesItem.image}
+          onClick={() => { handleClick(eyesItem) }}
+          />
+      )}
+    </div>
+  );
 }
 
 export default EyesSelector;

@@ -1,11 +1,15 @@
 import React, {useState, useRef, useEffect} from 'react'
 
-const Player = ({src}) => {
+const Player = ({src, handleTimeUpdate}) => {
     const [playing, setPlaying] = useState(false);
     const audioRef = useRef();
 
     const handlePlay = () => {
         setPlaying(!playing);
+    }
+
+    const onTimeUpdate = (e) => {
+      handleTimeUpdate(e.target.currentTime)
     }
 
     useEffect(() => {
@@ -20,7 +24,7 @@ const Player = ({src}) => {
 
     return (
     <div>
-        <audio ref={audioRef} src={src}></audio>
+        <audio onTimeUpdate={onTimeUpdate} ref={audioRef} src={src}></audio>
         <button onClick={handlePlay}>{playing ? 'pause' : 'play'}</button>
     </div>
   )

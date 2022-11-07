@@ -8,15 +8,10 @@ import Lyrics from './Components/Lyrics';
 import lines from './lyrics-lines.js';
 
 const App = () => {
-  const [currentLineIndex, setCurrentLineIndex] = useState(0);
+  const [currentLineIndex, setCurrentLineIndex] = useState(-1);
 
   const handleTimeUpdate = (actualTime) => {
-   const actualLine = lines.find(({time}) => time < actualTime);
-   const actualIndex = lines.indexOf(lines.find(({time}) => time < actualTime));
-   console.log(actualLine)
-   console.log(actualIndex);
-   console.log(actualTime)
-   setCurrentLineIndex(lines.indexOf(lines.find(({time}) => time < actualTime)));
+   setCurrentLineIndex(lines.indexOf(lines.find(({time}) => time > actualTime)) - 1);
   }
 
   return (

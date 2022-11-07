@@ -2,10 +2,8 @@ import React, {useRef, useEffect} from 'react'
 
 const Lyrics = ({lines, currentLineIndex}) => {
   const lineRef = useRef(lines[currentLineIndex]);
-  console.log(lineRef)
 
-  const lineRefs = useRef([])
- 
+  const lineRefs = useRef([]) 
 
   useEffect(() => {
     if (currentLineIndex >= 0) {
@@ -14,10 +12,8 @@ const Lyrics = ({lines, currentLineIndex}) => {
         inline: 'nearest',
         behavior: 'smooth',
       });
-    }
-    
+    }    
   }, [currentLineIndex])
-  
 
   return (
     <div className="lyrics">

@@ -1,0 +1,10 @@
+.large {
+  font-size: 200%;
+  border-width: 15px;
+  background-color: green;
+}
+
+:global(.small) {
+  font-size: 70%;
+  border-width: 1px;
+}
